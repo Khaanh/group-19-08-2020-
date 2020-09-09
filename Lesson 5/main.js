@@ -55,7 +55,7 @@
 // console.log(result);
 
 // function calculate(operation, n1, n2) {
-//     return operation(n1, n2)
+//     return operation(n1, n2, n3)
 // }
 
 // function add(n1, n2) {
@@ -63,7 +63,7 @@
 // }
 
 // function sub(n1, n2) {
-//     return n1 + n2
+//     return n1 - n2
 // }
 
 // ----------------------------------------------------------
