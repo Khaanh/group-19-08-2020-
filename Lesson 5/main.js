@@ -76,17 +76,17 @@
 // }
 
 // Пример того как работает forEach
-// function customForEach(array, cb) {
-//     for (let index = 0; index < array.length; index++) {
-//         const item = array[index];
+function customForEach(array, cb) {
+    for (let index = 0; index < array.length; index++) {
+        const item = array[index];
 
-//         cb(item, index)
-//     } 
-// }
+        cb(item, index)
+    } 
+}
 
-// customForEach(array, function (item, index) {
-//     console.log(index + ' - ' + item);
-// });
+customForEach(array, function (item, index) {
+    console.log(index + ' - ' + item);
+});
 
 
 // коллбэк в переменной
