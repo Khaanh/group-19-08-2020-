@@ -1,4 +1,4 @@
-// --------ООП-----------------
+// // --------ООП-----------------
 // // Basic User
 // function User(config) {
 //     this.name = config.name;
