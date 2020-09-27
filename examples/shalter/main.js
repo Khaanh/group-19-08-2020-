@@ -1,60 +1,79 @@
-let shalter = [{
-        who: "cat",
-        color: "brown",
-        breed: "british",
-        name: "Tom"
-    },
-    {
-        who: "cat",
-        color: "black",
-        breed: "siam",
-        name: "Den"
-    },
-    {
-        who: "dog",
-        color: "brown",
-        breed: "siam",
-        name: "Bob"
+window.onload = init;
+
+function init() {
+    let describe = document.querySelector('#describe');
+    let get = document.querySelector('#get');
+    console.log(describe, get);
+
+    describe.onclick = function () {
+
+        let fillOutForm = document.getElementById('fill-out-form');
+        let childForms = fillOutForm.children;
+        let radioValue = fillOutForm.elements.who.value;
+        
+        let color = childForms.color.value,
+            breed = childForms.breed.value,
+            name = childForms.name.value;
+            number = childForms.number.value;
+        
+        Animal.describeAnimal({
+            cat: +radioValue == 0,
+            dog: +radioValue == 1,
+            color,
+            breed,
+            name,
+            number: +number
+        });
     }
-];
 
-function describeAnimal() {
-    let findedAnimal = prompt('Кот или собака');
-    findedAnimal = findedAnimal.toLowerCase();
+}
 
-    let color = prompt('Цвет животного');
-    let breed = prompt('Порода животного');
-    let name = prompt('Имя животного');
+class Animal {
+    static shalter = [];
 
-    let animalInfo = {
-        who: findedAnimal,
+    constructor({
+        cat,
+        dog,
         color,
         breed,
         name,
-    };
+        number
+    }) {
+            this.cat = cat,
+            this.dog = dog,
+            this.color = color,
+            this.breed = breed,
+            this.name = name,
+            this.number = number
+    }
 
-    setAnimal(animalInfo);
-}
-function setAnimal(animalInfo) {
-    shalter.push(animalInfo);
-}
+    static describeAnimal(data) {
+        Animal.setAnimal(new Animal(data))
+    }
 
-// function getAnimals(key, value){
-//     shalter.filter(function(animal, index){
-//         animal[key] === value;
-//     })
-// }
+    static setAnimal(animal) {
+        console.log(animal);
+        Animal.shalter.push(animal);
+        console.log(Animal.shalter);
 
-function getValueForFilter() {
-    let value = prompt('Цвет, Порода, Имя животного');
-    value = value.toLowerCase();
-    
-    // TODO Проверки для данных
-    console.log(getAnimalsByColor(value));
-}
+    }
+    static getAnimals(key, value) {
+        return shalter.filter(function (animal, index) {
+            animal[key] === value;
+        })
+    }
 
-function getAnimalsByColor(value) {
-    return shalter.filter(function (animal, index) {
-        return animal.color === value;
-    })
+    static getAnimal(key, value) {
+        return shalter.find(function (animal, index) {
+            animal[key] === value;
+        })
+    }
+
+    changeName(number, newName) {
+        let findedAnimal = Animal.getAnimal('number', number);
+        if(!findedAnimal) return;
+
+        findedAnimal.name = newName;
+    }
+
 }
