@@ -28,6 +28,24 @@ function updateDirection(event) {
         direction = 'down';
 }
 
+
+
+function init() {
+    gridContainer = find('#snake-container');
+    let messageMox = find('#message');
+    let score = find('.score > b');
+
+    initGrid(gridCount, gridContainer);
+    
+    // ----------------------------------------------
+    // startBtn.addEventListener('click', startHandler);
+    // endBtn.addEventListener('click', endHandler);
+    // игра должнв стартовать и заканчиватся по клику на кнопки 
+    // ----------------------------------------------
+
+    startGame();
+}
+
 function createSnakeData(cell, row, count) {
     let arr = [];
 
@@ -50,16 +68,6 @@ function createFood() {
     return food;
 }
 
-function init() {
-    gridContainer = find('#snake-container');
-    let messageMox = find('#message');
-    let score = find('.score > b');
-
-    initGrid(gridCount, gridContainer);
-    startGame();
-}
-
-
 function startGame() {
     let randomBox = generateBoxForEat();
 
@@ -69,6 +77,14 @@ function startGame() {
             cell,
             row
         } = snake[0];
+
+        // ----------------------------------
+        // Нужно чтобы ф-ция noWallMode (реализует возможность змейки проходить через стены) работала так
+        // let {
+        //     cell,
+        //     row
+        // } = noWallMode(snake[0])
+        // ----------------------------------
 
         switch (direction) {
             case 'left': {
@@ -110,6 +126,16 @@ function startGame() {
 
     function updateSnake() {
         clearSnake();
+        // ---------------------------------------
+        // написать ф-цию checkOnEated, которая проверяет съела ли змейка еду, если да добавляет +1 в хвост и в score
+        // checkOnEated(randomBox.dataset);
+        // ----------------------------------
+
+
+        // ----------------------------------
+        // написать ф-цию checkOnTailCrush, которая проверяет врезалась ли голова змейки в себя же, если да - завершить игру
+        // checkOnTailCrush();
+        // ---------------------------------------
 
         for (const [index, snakePart] of snake.entries()) {
             let cell = findByCoords(snakePart.cell, snakePart.row);
@@ -144,7 +170,13 @@ function startGame() {
 
 
 }
-
+// ----------------------------------
+// дополнить эту функцию - вернуть все данные в начальное состояние
+// и использовать функцию во всех случаях. где игра завершается
+// function endGame(message = 'Game Over!') {
+//     clearTimeout(processGame);
+// }
+// ----------------------------------
 
 
 function initGrid(gridCount, target) {
