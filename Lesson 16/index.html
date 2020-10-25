@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="./main.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+        }
+
+        #parent {
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            display: flex;
+        }
+
+        .clild {
+            margin: auto;
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+        }
+
+        #parent-2 {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        #form {
+            margin-top: 50px;
+        }
+
+        .error {
+            border: 1px red solid;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+        input {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1 id='coords'></h1>
+    <div id="parent">
+        <div id="clild" class="clild"></div>
+    </div>
+    <div id="parent-2"></div> -->
+    <div>
+        <img id="ball" src="./ball.svg" alt="">
+    </div>
+
+    <form id="form">
+        <label>
+            Name:
+            <input name='name' type="text">
+        </label>
+        <label>
+            Email:
+            <input name='email' type="email">
+        </label>
+
+    </form>
+</body>
+
+</html>
