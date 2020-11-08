@@ -4,6 +4,7 @@ let photoHistory = [];
 
 let photContainer = document.querySelector('.photo-container');
 let request = document.querySelector('#request');
+let add = document.querySelector('#add');
 let photoInput = document.querySelector('#photoInput');
 
 request.addEventListener('click', main);
@@ -22,8 +23,9 @@ function main() {
         photoInput.disabled = true;
 
         fetch(`${url}${photoUrl}/${id}`)
-            .then(data => {
-                return data.json();
+            .then(response => {
+                console.log(response);
+                return response.json();
             })
             .then(data => {
                 console.log(data);
@@ -53,4 +55,27 @@ function loadImage(data) {
         });
         image.onerror = () => reject();
     })
+}
+
+let newPhoto = {
+    albumId: 1,
+    id: 1,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    url: "https://via.placeholder.com/600/92c952",
+    thumbnailUrl: "https://via.placeholder.com/150/92c952"
+}
+
+function addPhoto(imgObj) {
+    imgObj = JSON.stringify(imgObj);
+    fetch(`${url}${photoUrl}`, { method: 'PUT', body: imgObj})
+    .then( res => {
+        console.log(res);
+    })
+    .catch( error => {
+        console.log(error);
+    })
+}
+
+add.onclick = () => {
+    addPhoto(newPhoto);
 }
