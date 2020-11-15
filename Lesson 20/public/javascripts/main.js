@@ -24,9 +24,21 @@ class UserApi {
             },
         });
     }
+
+    static deleteUser(id) {
+        return fetch(UserApi.baseUrl + '/' + id, {
+            method: "delete",
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    UserApi.deleteUser("haQsfFFg7")
+            .then( response => {
+                console.log(response);
+                
+            })
 
     let form = document.querySelector('#regForm');
     let usersContainer = document.querySelector('#users');

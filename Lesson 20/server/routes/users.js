@@ -28,6 +28,13 @@ router.get('/', function(req, res, next) {
     data: usersId,
   });
 
+}).delete('/:id', function(req, res, next) {
+  console.log(req.body);
+
+  res.status(200).json({
+    status: 'succes',
+    data: 'ok',
+  });
 });
 
 module.exports = router;
